@@ -1,0 +1,49 @@
+var team;
+var team1 = getColumn("FIFA World Cup 2022", "team1");
+var team2 = getColumn("FIFA World Cup 2022", "team2");
+var goals1 = getColumn("FIFA World Cup 2022", "number of goals team1");
+var goals2 = getColumn("FIFA World Cup 2022", "number of goals team2");
+//finds random teams that played agenst eachother
+function teams() {
+  team = randomNumber(1, team1.length);
+  team1 = team1[team];
+  team2 = team2[team];
+  console.log(team1);
+  console.log(team2);
+}
+teams();
+//finds the number of goals they made
+function numGoals() {
+  goals1 = goals1[team];
+  goals2 = goals2[team];
+  console.log(goals1);
+  console.log(goals2);
+}
+numGoals();
+//tells you who won a who lost and the number of goals thay had
+function winner() {
+  var win;
+  if (goals1>goals2) {
+    win = team1;
+  } else if ((goals2 > goals1)) {
+    win = team2;
+  } else {
+    win = !(team1 && team2);
+  }
+  return win;
+}
+winner();
+console.log("the winner of this match is " +winner(team1,team2) );
+function matchDates(date) {
+  var dates = getColumn("FIFA World Cup 2022", "date");
+  var teams = [(getColumn("FIFA World Cup 2022", "team2")), (getColumn("FIFA World Cup 2022", "team1"))];
+  var filtteredDates = [];
+  for (var i = 0; i < dates.length; i++) {
+    if (dates[i]==date) {
+      appendItem(filtteredDates, dates[i]);
+      teams = filtteredDates.lenght;
+    }
+  }
+  return teams;
+}
+console.log("what games were played on " + matchDates("20 Nov 2022"));
